@@ -15,18 +15,18 @@ AFRAME.registerComponent("mangas", {
         {
           id: "opm",
           title: "One Punch Man",
-          url: "./assets/thumbnails/cover2.jpg",
+          url: "assets/thumbnails/cover2.jpg",
         },
   
         {
           id: "black_clover",
           title: "Black Clover",
-          url: "./assets/thumbnails/cover3.jpg",
+          url: "assets/thumbnails/cover3.jpg",
         },
         {
           id: "tokyo_ghoul",
           title: "Tokyo Ghoul",
-          url: "./assets/thumbnails/cover4.jpg",
+          url: "../assets/thumbnails/cover4.jpg",
         },
       ];
       let prevoiusXPosition = -60;
@@ -42,6 +42,7 @@ AFRAME.registerComponent("mangas", {
         const borderEl = this.createBorder(position,item.id);
         // Thumbnail Element
        const thumbNail = this.createThumbnail(item);
+       borderEl.appendChild(thumbNail);
         // Title Text Element
         const titleEl  = this.createTitle(position,item);
         borderEl.appendChild(titleEl);
@@ -55,9 +56,9 @@ AFRAME.registerComponent("mangas", {
       entity.setAttribute("id",id);
       entity.setAttribute("visible",true);
       entity.setAttribute("geometry",{
-      primitive : "plane",
-      width : 20, 
-      height : 28});
+      primitive : "ring",
+      radiusInner : 9, 
+      radiusOuter : 10});
       entity.setAttribute("position",pos);
       entity.setAttribute("material",{
       color:"#0077CC",
@@ -70,9 +71,9 @@ AFRAME.registerComponent("mangas", {
       const entity = document.createElement("a-entity");
       
       entity.setAttribute("visible",true);
-    //   entity.setAttribute("geometry",{
-    //   primitive : "circle",
-    //   radius : 9 });
+      entity.setAttribute("geometry",{
+      primitive : "circle",
+      radius : 9 });
       entity.setAttribute("material",{
       src : item.url});
   
